@@ -1,0 +1,21 @@
+class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        if len(nums)==1 or len(nums)==0:
+            return []
+        res=[]
+        nums.sort()
+        for i in range(len(nums)-2):
+            left=i+1
+            right=len(nums)-1
+            while left<right:
+                t=nums[i]+nums[left]+nums[right]
+                if t==0:
+                    if [nums[i],nums[left],nums[right]] not in res:
+                        res.append([nums[i],nums[left],nums[right]])
+                    left=left+1
+                    right=right-1
+                elif t>0:
+                    right=right-1
+                elif t<0:
+                    left=left+1
+        return res
